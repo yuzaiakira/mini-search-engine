@@ -44,3 +44,9 @@ Desktop.ini
 # Local environment files
 .env
 .env.*
+
+# Ignore generated/local data contents but keep folder docs
+data/*
+!data/README.md
+index/*
+!index/README.md
