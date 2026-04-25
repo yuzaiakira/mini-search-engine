@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}جستجو | Mini Google{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <h1 class="logo">Mini Google</h1>
+  <p class="muted">{{ indexed_pages_count }} صفحه در دیتابیس ایندکس شده است.</p>
+
+  <form class="search-form" method="get" action="{{ url_for('search_page') }}">
+    <input name="q" type="search" value="{{ query }}" placeholder="عبارت جستجو را وارد کن..." autofocus>
+    <input class="small-input" name="top_k" type="number" min="1" max="50" value="{{ top_k }}" title="تعداد نتایج">
+    <button type="submit">جستجو</button>
+  </form>
+</section>
+
+{% if not engine_ready %}
+  <div class="empty-state">
+    هنوز هیچ ایندکسی ساخته نشده است. از صفحه «اضافه کردن سایت» یک سایت، sitemap یا صفحه خاص اضافه کن.
+  </div>
+{% endif %}
+
+{% if query %}
+  <p class="muted">{{ results|length }} نتیجه برای «{{ query }}»</p>
+
+  {% if results %}
+    <section class="results">
+      {% for result in results %}
+        <article class="result-card">
+          <a class="result-title" href="{{ result.url }}" target="_blank" rel="noreferrer">{{ result.title }}</a>
+          <div class="result-url">{{ result.url }}</div>
+          <p>{{ result.snippet|highlight(query) }}</p>
+          <small>score: {{ "%.4f"|format(result.score) }} | tf-idf: {{ "%.4f"|format(result.tfidf_score) }}</small>
+        </article>
+      {% endfor %}
+    </section>
+  {% else %}
+    <div class="empty-state">نتیجه‌ای پیدا نشد.</div>
+  {% endif %}
+{% endif %}
+{% endblock %}

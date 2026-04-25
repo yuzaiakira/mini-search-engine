@@ -1,0 +1,307 @@
+:root {
+  --border: #dadce0;
+  --text: #202124;
+  --muted: #5f6368;
+  --green: #188038;
+  --blue: #1a73e8;
+  --bg-soft: #f8fafd;
+  --danger: #b3261e;
+  --success: #137333;
+  --warning: #b06000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: #fff;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 28px;
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  direction: ltr;
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+nav a,
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+nav a:hover,
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px 18px 80px;
+}
+
+.hero {
+  max-width: 850px;
+  margin: 24px auto 34px;
+  text-align: center;
+}
+
+.logo {
+  direction: ltr;
+  margin: 20px 0 6px;
+  font-size: clamp(42px, 8vw, 72px);
+  letter-spacing: -2px;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.search-form input[type="search"] {
+  flex: 1;
+  border-radius: 999px;
+  font-size: 18px;
+  padding: 14px 20px;
+}
+
+.small-input {
+  max-width: 92px;
+  text-align: center;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+  background: #fff;
+}
+
+input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.12);
+}
+
+button {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 12px 22px;
+  background: #f8f9fa;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: #c6c6c6;
+  background: #f1f3f4;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+}
+
+.muted,
+small {
+  color: var(--muted);
+}
+
+.results {
+  max-width: 840px;
+}
+
+.result-card {
+  margin: 24px 0;
+}
+
+.result-title {
+  font-size: 20px;
+}
+
+.result-url,
+.ltr {
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: plaintext;
+}
+
+.result-url {
+  color: var(--green);
+  font-size: 14px;
+  margin: 2px 0 5px;
+}
+
+mark {
+  padding: 0 3px;
+  border-radius: 4px;
+}
+
+.card,
+.form-card,
+.hint-box,
+.empty-state,
+.message {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.form-card {
+  display: grid;
+  gap: 18px;
+  padding: 22px;
+}
+
+.form-card label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+}
+
+.form-card button {
+  justify-self: start;
+}
+
+.hint-box,
+.empty-state,
+.message {
+  padding: 14px 16px;
+  margin: 16px 0;
+  background: var(--bg-soft);
+}
+
+.messages {
+  margin-bottom: 20px;
+}
+
+.message.success {
+  border-color: rgba(19, 115, 51, 0.35);
+  color: var(--success);
+  background: #f0f8f1;
+}
+
+.message.warning {
+  border-color: rgba(176, 96, 0, 0.35);
+  color: var(--warning);
+  background: #fff8e6;
+}
+
+.message.error,
+.error-text {
+  color: var(--danger);
+}
+
+.message.error {
+  border-color: rgba(179, 38, 30, 0.35);
+  background: #fceeee;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+th,
+td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+th {
+  text-align: right;
+  background: #f8f9fa;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+.cell-subtext {
+  direction: ltr;
+  text-align: left;
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.badge,
+.status {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: #eef3fe;
+  font-size: 13px;
+}
+
+.status.done {
+  color: var(--success);
+  background: #e6f4ea;
+}
+
+.status.failed,
+.status.empty {
+  color: var(--danger);
+  background: #fceeee;
+}
+
+.status.running {
+  color: var(--warning);
+  background: #fff8e6;
+}
+
+@media (max-width: 720px) {
+  .topbar,
+  .search-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .small-input {
+    max-width: none;
+  }
+}

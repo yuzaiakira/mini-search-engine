@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}سایت‌های گرفته‌شده | Mini Google{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <h1>لیست سایت‌های گرفته‌شده</h1>
+  <p class="muted">با کلیک روی هر سایت، صفحات ایندکس‌شده‌ی همان سایت نمایش داده می‌شود.</p>
+</section>
+
+{% if sites %}
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>سایت</th>
+          <th>نوع</th>
+          <th>وضعیت</th>
+          <th>تعداد صفحه</th>
+          <th>لیمیت</th>
+          <th>تاریخ</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for site in sites %}
+          <tr>
+            <td>
+              <a href="{{ url_for('site_pages_page', site_id=site.id) }}">{{ site.base_url }}</a>
+              <div class="cell-subtext">{{ site.source_url }}</div>
+              {% if site.error %}<div class="error-text">{{ site.error }}</div>{% endif %}
+            </td>
+            <td><span class="badge">{{ site.source_type }}</span></td>
+            <td><span class="status {{ site.status }}">{{ site.status }}</span></td>
+            <td>{{ site.page_count }}</td>
+            <td>{{ site.limit_pages if site.limit_pages is not none else 'بدون لیمیت' }}</td>
+            <td>{{ site.created_at }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <div class="empty-state">هنوز سایتی گرفته نشده است.</div>
+{% endif %}
+{% endblock %}

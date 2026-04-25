@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}اضافه کردن سایت | Mini Google{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <h1>اضافه کردن سایت یا صفحه</h1>
+  <p class="muted">
+    اولویت پردازش فرم این است: اگر «لینک صفحه خاص» پر باشد فقط همان صفحه ایندکس می‌شود؛
+    اگر خالی باشد و sitemap بدهی، URLهای sitemap خوانده می‌شوند؛ و اگر sitemap هم خالی باشد، crawler از URL سایت شروع می‌کند.
+  </p>
+</section>
+
+<form class="card form-card" method="post" action="{{ url_for('add_site_page') }}">
+  <label>
+    URL سایت یا نقطه شروع crawler
+    <input name="site_url" type="url" placeholder="https://example.com">
+  </label>
+
+  <label>
+    لینک sitemap اختیاری
+    <input name="sitemap_url" type="url" placeholder="https://example.com/sitemap.xml">
+  </label>
+
+  <label>
+    لینک صفحه خاص اختیاری
+    <input name="page_url" type="url" placeholder="https://example.com/blog/post-1">
+  </label>
+
+  <label>
+    لیمیت تعداد صفحه اختیاری
+    <input name="limit_pages" type="number" min="1" placeholder="مثلاً 50؛ اگر خالی باشد کل سایت/sitemap خوانده می‌شود">
+  </label>
+
+  <button type="submit">گرفتن، ایندکس کردن و افزودن به دیتابیس</button>
+</form>
+
+<div class="hint-box">
+  <strong>نکته:</strong>
+  این crawler آموزشی است. برای سایت‌های واقعی بهتر است robots.txt، محدودیت نرخ درخواست و قوانین همان سایت را رعایت کنی.
+</div>
+{% endblock %}
